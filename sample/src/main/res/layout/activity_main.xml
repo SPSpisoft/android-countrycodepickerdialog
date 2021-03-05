@@ -18,6 +18,11 @@
                 android:layout_height="wrap_content"
                 android:text="Select country"/>
 
+        <ImageView
+                android:id="@+id/viewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         <TextView
                 android:id="@+id/viewCountryCode"
                 android:layout_width="wrap_content"
