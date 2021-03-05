@@ -45,7 +45,7 @@ Add the library dependency to your app's `build.gradle'
 
 ```
 dependencies {
-    implementation 'com.github.BartNijland91:android-countrycodepickerdialog:v1.1'
+    implementation 'com.github.SPSpisoft:android-countrycodepickerdialog:Tag' \\1.0.0
 }
 ```
 
