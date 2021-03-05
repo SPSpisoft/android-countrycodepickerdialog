@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity(), OnCountryCodeSelectedListener {
         setContentView(R.layout.activity_main)
 
         viewButton.setOnClickListener {
-            CountryCodePickerDialogFragment.getInstance().show(supportFragmentManager, null)
+            CountryCodePickerDialogFragment.Companion.getInstance("ir", "جستجو").show(supportFragmentManager, null)
+//            CountryCodePickerDialogFragment.getInstance().show(supportFragmentManager, null)
         }
     }
 

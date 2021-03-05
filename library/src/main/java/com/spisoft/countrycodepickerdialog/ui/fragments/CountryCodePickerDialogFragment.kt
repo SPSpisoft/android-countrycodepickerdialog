@@ -21,9 +21,11 @@ import com.spisoft.countrycodepickerdialog.utils.CountryCodesUtil
 class CountryCodePickerDialogFragment : DialogFragment(), OnCountryCodeSelectedListener {
 
     companion object {
+        private lateinit var strSearch: String
         private const val EXTRA_DEFAULT_COUNTRY_SELECTED = "EXTRA_DEFAULT_COUNTRY"
 
-        fun getInstance(defaultSelectedCountryCode: String? = null): CountryCodePickerDialogFragment {
+        fun getInstance(defaultSelectedCountryCode: String? = null, titleSearch: String = R.string.country_code_picker_dialog_search_hint.toString()): CountryCodePickerDialogFragment {
+            strSearch = titleSearch;
             val fragment = CountryCodePickerDialogFragment()
             val bundle = Bundle()
             bundle.putString(EXTRA_DEFAULT_COUNTRY_SELECTED, defaultSelectedCountryCode)
@@ -36,7 +38,7 @@ class CountryCodePickerDialogFragment : DialogFragment(), OnCountryCodeSelectedL
     lateinit var jsonFetcher: CountryCodesJsonFetcher
 
     private val adapter by lazy {
-        CountryCodePickerDialogAdapter(this, imageFetcher)
+        CountryCodePickerDialogAdapter(requireContext(), this, imageFetcher)
     }
 
     override fun onAttach(context: Context) {
@@ -66,6 +68,7 @@ class CountryCodePickerDialogFragment : DialogFragment(), OnCountryCodeSelectedL
     }
 
     private fun setupSearch() {
+        viewDialogCountryCodePickerSearch.hint = strSearch
         viewDialogCountryCodePickerSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
 

@@ -1,5 +1,6 @@
 package com.spisoft.countrycodepickerdialog.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.spisoft.countrycodepickerdialog.models.CountryCode
 import com.spisoft.countrycodepickerdialog.utils.CountryCodesUtil
 
 class CountryCodePickerDialogAdapter(
+        private val mContext: Context,
         private val onCountryCodeSelectedListener: OnCountryCodeSelectedListener?,
         private val imageFetcher: ImageFetcher) : RecyclerView.Adapter<CountryCodePickerDialogAdapter.CountryCodeRowViewHolder>() {
 
@@ -53,10 +55,14 @@ class CountryCodePickerDialogAdapter(
 
         viewHolder.flag.setImageBitmap(null)
 
+//
+//        imageFetcher.loadImage(url = "https://www.countryflags.io/${countryCode.code.toLowerCase()}/flat/64.png", callback = {
+//            viewHolder.flag.setImageBitmap(it)
+//        })
 
-        imageFetcher.loadImage(url = "https://www.countryflags.io/${countryCode.code.toLowerCase()}/flat/64.png", callback = {
-            viewHolder.flag.setImageBitmap(it)
-        })
+//        viewHolder.flag.setImageBitmap(imageFetcher.loadImage2(url = *arrayOf("https://www.countryflags.io/${countryCode.code.toLowerCase()}/flat/64.png")))
+//        viewHolder.flag.setImageBitmap(imageFetcher.loadImage3(context = mContext , url = *arrayOf("https://www.countryflags.io/${countryCode.code.toLowerCase()}/flat/64.png")))
+        ImageFetcher.loadImage4(mContext, "https://www.countryflags.io/${countryCode.code.toLowerCase()}/flat/64.png", viewHolder.flag).execute();
 
         viewHolder.country.text = countryCode.name
         viewHolder.dialCode.text = countryCode.dialCode
